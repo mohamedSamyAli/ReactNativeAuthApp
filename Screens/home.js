@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View ,Button} from 'react-native'
-import{DeleteToken}from "../Token"
+import{DeleteToken}from "../helpers/Token"
 
 export default  HomeScreen=(props)=> {
  const logOut = async()=>{

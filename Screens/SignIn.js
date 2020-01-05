@@ -1,10 +1,10 @@
 import React, {useState } from 'react'
 import { View,Image,ActivityIndicator} from 'react-native'
 import { Button } from 'react-native-elements';
-import Input from "../Input" 
-import {apiKey} from "../Url"
+import Input from "../componnet/Input" 
+import {apiKey} from "../helpers/Url"
 import styles from"./ٍStyels/style"
-import{setToken}from "../Token"
+import{setToken}from "../helpers/Token"
 
 const SignInScreen = props=> {
 const [loadind,setLoading] = useState(false)
@@ -44,7 +44,7 @@ return (
         <View style={styles.picContainer}>
             <Image
                 style={{ width: '100%', height: '100%' ,borderRadius:50}}
-                source={require('../facebook.png')}
+                source={require('../images/facebook.jpg')}
             />
         </View>
         <View style={styles.authContainer}>

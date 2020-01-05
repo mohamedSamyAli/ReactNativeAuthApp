@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View,Image} from 'react-native'
-import{getToken}from "../Token"
+import{getToken}from "../helpers/Token"
 import { Button } from 'react-native-elements';
 import styles from"./ٍStyels/style"
 
@@ -28,7 +28,7 @@ if(date_experition <= new Date() || !token || !userId){
                 <View style={styles.picContainer}>
                 <Image
           style={{width: '100%', height: '100%'}}
-          source={require('../facebook.png')}
+          source={require('../images/facebook.jpg')}
         />
                 </View>
                 <View style={styles.buttonContainer}  >

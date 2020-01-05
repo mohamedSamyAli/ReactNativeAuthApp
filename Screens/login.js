@@ -1,9 +1,9 @@
 import React, { Component,useState } from 'react'
 import { View,ActivityIndicator,StyleSheet,Image} from 'react-native'
 import { Button } from 'react-native-elements';
-import Input from "../Input" 
-import {apiKey} from "../Url"
-import{setToken}from "../Token"
+import Input from "../componnet/Input" 
+import {apiKey} from "../helpers/Url"
+import{setToken}from "../helpers/Token"
 import styles from"./ٍStyels/style"
 
 
@@ -48,7 +48,7 @@ const LoginScreen = props=> {
                 <View style={styles.picContainer}>
                 <Image
           style={{width: '100%', height: '100%'}}
-          source={require('../facebook.png')}
+          source={require('../images/facebook.jpg')}
         />
             </View>
             <View style={styles.authContainer}>
