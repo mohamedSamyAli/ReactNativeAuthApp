@@ -10,7 +10,7 @@ const AuthNavigator = createStackNavigator({
     LoginScreen: {
         screen: LogintScreen,
         navigationOptions: {
-          headerMode: 'none',
+        headershown:false,
         },
       },
     SignScreen: SignScreen

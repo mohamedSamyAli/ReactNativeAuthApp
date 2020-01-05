@@ -1,13 +1,17 @@
-import React, { Component,useState } from 'react'
-import { View,Image,KeyboardAvoidingView} from 'react-native'
+import React, {useState } from 'react'
+import { View,Image,ActivityIndicator} from 'react-native'
 import { Button } from 'react-native-elements';
 import Input from "../Input" 
 import {apiKey} from "../Url"
 import styles from"./ٍStyels/style"
+import{setToken}from "../Token"
 
 const SignInScreen = props=> {
+const [loadind,setLoading] = useState(false)
+
 var name,email,password = '';
 var Create = ()=>{
+    setLoading(true)
     if(name!=''&&email!=''&&password!=''){
         debugger;
         fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="+apiKey,{
@@ -21,19 +25,21 @@ var Create = ()=>{
                returnSecureToken:true
            }) 
         }).then((resp) => resp.json()).then((e)=>{
-            setToken(e.idToken ,e.expiresIn ,e.localId)
-            console.log(e)
-            props.navigation.navigate("HomeScreen")
-        }).catch((e)=>{console.log(e)})
+            if(!e.error){
+                setToken(e.idToken ,e.expiresIn ,e.localId)
+                props.navigation.navigate("HomeScreen")
+            } else {
+                alert("error ==> "+e.error.message)
+            }
+            setLoading(false)
+        }).catch((e)=>{ debugger;console.log(e)})
+    }else{
+        setLoading(false)
+        alert("Please Enter valid Values")
     }
 }       
 
 return (
-<KeyboardAvoidingView
-      behavior="padding"
-      keyboardVerticalOffset={50}
-      style={{flex:1}}
-    >
     <View style={styles.screen}>
         <View style={styles.picContainer}>
             <Image
@@ -56,7 +62,6 @@ return (
                 icon="alarm"
                 id="userName"
                 required
-
                 placeholder="UserName"
                 keyboardType="email-address"
                 onInputChange={(t) => { name = t }}
@@ -72,12 +77,11 @@ return (
                 errorText="enterValed;elwfskd;l"
             />
             </View>
-
             <View style={styles.buttonContainer}  >
-                <Button buttonStyle={{width:'100%',height:50,backgroundColor:"#1b262c",color:"#ffffff"}} title="Create new account" onPress={Create}></Button>
+            {loadind? <ActivityIndicator></ActivityIndicator> :
+            <Button buttonStyle={{width:'100%',height:50,backgroundColor:"#1b262c"}} title="Create new account" onPress={Create}></Button>}
         </View>
     </View>
-    </KeyboardAvoidingView>
         )
     }
 

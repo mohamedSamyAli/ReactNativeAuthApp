@@ -8,9 +8,9 @@ export default  HomeScreen=(props)=> {
     props.navigation.navigate("LoginScreen")
  }
         return (
-            <View>
-                <Text> Home </Text>
-                <Button title="home" onPress={logOut}></Button>
+            <View style={{flex:1,justifyContent:'space-around',alignItems:'center'}}>
+                <Text style={{fontSize:50}}>HOME</Text>
+                <Button title="LOG OUT" onPress={logOut}></Button>
             </View>
         )
     
